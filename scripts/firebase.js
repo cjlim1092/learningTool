@@ -17,9 +17,9 @@
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-
-var database = firebase.database().ref();  // Specifies the database root
- firebase.database().ref("child/path"); // Specifies a specific location in the database tree
+  var database = firebase.database()
+var root = firebase.database().ref();  // Specifies the database root
+var path = firebase.database().ref("child/path") // Specifies a specific location in the database tree
 
 let myFlashcards = [ {
  
@@ -52,7 +52,8 @@ let myFlashcards = [ {
     }
  
   ];
-console.log(myFlashcards());
+console.log(myFlashcards);
+root.set(myFlashcards);
 
 // Make the database point to the location root -> deck -> flashcards
 // If the location doesn't exist is will be created
@@ -62,3 +63,47 @@ firebase.database().ref('deck/flashcards');
 // Anything that was in this location will be overwritten
 // Thus, a write operation also does an update
 firebase.database().set(myFlashcards);
+
+// Make the database point to the location root -> deck -> flashcards
+// If the location doesn't exist is will be created
+firebase.database().ref('deck/flashcards'); 
+ 
+// Remove myFlashcards from the database
+firebase.database.remove()
+// As before,make the database point to the location where the data exists
+ 
+// If the location doesn't exist it will be created but there will be nothing to retirieve
+ 
+let fc = firebase.database().ref('deck/flashy');
+ 
+ 
+ 
+// A variable to store the JSON results
+ 
+let jsonString;
+ 
+ 
+ 
+// Tell Firebase to retrieve your data
+ 
+fc.on("value", function(retrieve) {
+ 
+   
+ 
+    //Get the raw data back from the database
+ 
+    let queryData = retrieve.val();
+ 
+     
+ 
+    // Turn the data into a JSON String
+ 
+    jsonString = JSON.stringify(queryData);
+ 
+});
+ 
+ 
+ 
+// Print the data out as a JSON string or otherwise manipulate it
+ 
+console.log (' JSON string:' + jsonString )
