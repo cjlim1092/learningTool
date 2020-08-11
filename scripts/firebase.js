@@ -34,6 +34,7 @@ let myFlashcards = [ {
     }
  
   ];
+console.log(myFlashcards());
 database.set( myFlashcards);
 // Make the database point to the location root -> deck -> flashcards
 // If the location doesn't exist is will be created
