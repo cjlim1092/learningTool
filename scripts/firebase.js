@@ -18,8 +18,8 @@
   firebase.analytics();
 
 
-firebase.database().ref();  // Specifies the database root
-var database = firebase.database().ref("child/path") // Specifies a specific location in the database tree
+var database = firebase.database().ref();  // Specifies the database root
+ firebase.database().ref("child/path"); // Specifies a specific location in the database tree
 
 let myFlashcards = [ {
  
@@ -53,7 +53,7 @@ let myFlashcards = [ {
  
   ];
 console.log(myFlashcards());
-database.set( myFlashcards);
+
 // Make the database point to the location root -> deck -> flashcards
 // If the location doesn't exist is will be created
 firebase.database().ref('deck/flashcards'); 
